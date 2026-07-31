@@ -72,8 +72,18 @@
   }
 
   .about__stats,
-  .menu-grid {
+  .menu-grid,
+  .contact-card,
+  .contact-card__details {
     grid-template-columns: 1fr;
+  }
+
+  .contact-card__media {
+    min-height: 180px;
+  }
+
+  .contact-card__actions .button {
+    width: 100%;
   }
 
   .showcase-grid {
