@@ -1,0 +1,36 @@
+export const productsOrServices = [
+  {
+    title: "Signature Cinnamon Coffee",
+    category: "Coffee",
+    price: "Cafe favorite",
+    description: "A smooth specialty coffee profile with a warm cinnamon finish.",
+    tag: "Signature",
+    image: "/images/menu/cinnamon-coffee.png",
+    imageAlt: "Cinnamon coffee with latte art on a cafe table",
+  },
+  {
+    title: "Blueberry Matcha",
+    category: "Matcha",
+    price: "Premium blend",
+    description: "Bright matcha layered with fruit notes for a fresh, creamy sip.",
+    tag: "Featured",
+    image: "/images/menu/berry-matcha.png",
+    imageAlt: "Iced matcha latte with berry swirls in a clear glass",
+  },
+  {
+    title: "Daily Baked Pastries",
+    category: "Bakery",
+    price: "Fresh daily",
+    description: "Small-batch pastries baked for crisp edges and soft centers.",
+    tag: "Daily",
+  },
+  {
+    title: "Iced Cafe Specials",
+    category: "Cold drinks",
+    price: "Chilled",
+    description: "Cold coffee and matcha drinks built for warm afternoons.",
+    tag: "Iced",
+    image: "/images/menu/iced-coffee.png",
+    imageAlt: "Iced coffee served in a tall glass",
+  },
+];

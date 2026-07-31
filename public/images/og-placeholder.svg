@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0a0f12"/>
+  <circle cx="600" cy="290" r="145" fill="#a6461d" stroke="#f5b51b" stroke-width="12"/>
+  <path d="M545 250c38 0 55-25 55-62m0 62V188m0 62c38 0 55-25 55-62" stroke="#f5ead7" stroke-width="20" stroke-linecap="round"/>
+  <text x="600" y="370" text-anchor="middle" font-family="Georgia, serif" font-size="54" fill="#f5ead7">CINNAMON</text>
+  <text x="600" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" letter-spacing="8" fill="#f5ead7">TASTE CAFE</text>
+</svg>
