@@ -249,12 +249,20 @@
 }
 
 .scroll-video__media,
+.scroll-video__backdrop,
 .scroll-video__video,
 .scroll-video__fallback,
 .scroll-video__wash,
 .scroll-video__bottom {
   position: absolute;
   inset: 0;
+}
+
+.scroll-video__backdrop {
+  background:
+    radial-gradient(circle at 50% 36%, rgba(166, 70, 29, 0.32), transparent 26%),
+    radial-gradient(circle at 74% 22%, rgba(185, 221, 54, 0.16), transparent 18%),
+    linear-gradient(145deg, #0a0f12, #141b1f 56%, #080c0e);
 }
 
 .scroll-video__video {
@@ -264,6 +272,12 @@
   object-position: var(--video-position-desktop, center center);
   transform: translateZ(0);
   will-change: transform;
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.scroll-video__video--ready {
+  opacity: 1;
 }
 
 .scroll-video__fallback {
@@ -323,7 +337,7 @@
 .hero-copy,
 .video-stage {
   position: absolute;
-  z-index: 4;
+  z-index: 6;
   text-shadow: 0 2px 28px rgba(0, 0, 0, 0.72);
   will-change: opacity, transform, filter;
 }
@@ -373,7 +387,7 @@
 
 .scroll-indicator {
   position: absolute;
-  z-index: 5;
+  z-index: 6;
   left: 50%;
   bottom: 1.5rem;
   display: grid;

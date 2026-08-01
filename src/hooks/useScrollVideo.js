@@ -32,13 +32,13 @@ export function useScrollVideo() {
 
   const animate = useCallback(() => {
     const video = videoRef.current;
-    if (!video || !durationRef.current || prefersReducedMotion) {
+    if (!video || !durationRef.current) {
       videoFrameRef.current = null;
       return;
     }
 
     const now = performance.now();
-    const smoothing = window.innerWidth < 768 ? 0.24 : 0.18;
+    const smoothing = prefersReducedMotion ? 1 : window.innerWidth < 768 ? 0.24 : 0.18;
     const nextTime = smoothTimeRef.current + (targetTimeRef.current - smoothTimeRef.current) * smoothing;
     const remaining = Math.abs(targetTimeRef.current - nextTime);
     const seekDelta = Math.abs(video.currentTime - nextTime);
@@ -71,10 +71,16 @@ export function useScrollVideo() {
     const nextProgress = clamp(-rect.top / dimensionsRef.current.scrollableDistance);
     setProgress((current) => (Math.abs(current - nextProgress) > 0.006 ? nextProgress : current));
 
-    if (!durationRef.current || prefersReducedMotion) return;
+    if (!durationRef.current) return;
 
     const safeDuration = Math.max(durationRef.current - 0.05, 0);
     targetTimeRef.current = nextProgress * safeDuration;
+
+    if (prefersReducedMotion) {
+      video.currentTime = targetTimeRef.current;
+      smoothTimeRef.current = targetTimeRef.current;
+      return;
+    }
 
     if (!videoFrameRef.current) {
       videoFrameRef.current = requestAnimationFrame(animate);
@@ -113,13 +119,16 @@ export function useScrollVideo() {
     };
 
     video.addEventListener("loadedmetadata", setDuration);
+    video.addEventListener("loadeddata", setDuration);
     video.addEventListener("durationchange", setDuration);
     video.addEventListener("canplay", setDuration);
     video.addEventListener("error", handleError);
+    video.load();
     video.pause();
 
     return () => {
       video.removeEventListener("loadedmetadata", setDuration);
+      video.removeEventListener("loadeddata", setDuration);
       video.removeEventListener("durationchange", setDuration);
       video.removeEventListener("canplay", setDuration);
       video.removeEventListener("error", handleError);

@@ -11,10 +11,11 @@ export default function ScrollVideoHero() {
     <section className="scroll-video" id="top" ref={containerRef} aria-label="Cinnamon Taste Cafe cinematic story">
       <div className="scroll-video__sticky">
         <div className="scroll-video__media">
+          <div className="scroll-video__backdrop" aria-hidden="true" />
           {!videoError && (
             <video
               ref={videoRef}
-              className="scroll-video__video"
+              className={`scroll-video__video ${videoReady ? "scroll-video__video--ready" : ""}`}
               muted
               playsInline
               preload="auto"
